@@ -25,6 +25,7 @@ namespace MovieRentalWebApp.Models
         public string  Email { get; set; }
 
         [Display(Name ="Birthdate")]
+        [Age18IfAMember]
         public DateTime? BirthDate { get; set; }
 
         [Required]

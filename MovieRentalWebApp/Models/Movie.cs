@@ -21,6 +21,10 @@ namespace MovieRentalWebApp.Models
 
         public DateTime DateAdded { get; set; }
 
+        [Required]
+        [Range(1,20)]
+        public short NumberInStock { get; set; }
+
         public Genre Genre { get; set; }
 
         [Required]

@@ -19,7 +19,7 @@ namespace MovieRentalWebApp.Models
 
         public byte DurationInMonth { get; set; }
 
-        protected static readonly byte Unknown = 0;
-        protected static readonly byte PayAsYouGo = 1;
+        public static readonly byte Unknown = 0;
+        public static readonly byte PayAsYouGo = 1;
     }
 }

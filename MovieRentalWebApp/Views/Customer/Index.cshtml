@@ -1,0 +1,44 @@
+﻿@model IEnumerable<MovieRentalWebApp.Models.Customer>
+@{
+    ViewBag.Title = "Customers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>Customers</h3>
+<hr />
+<p>@Html.ActionLink("New Customer","New","Customer", new { @class = "btn btn-primary"})</p>
+<hr />
+@if (!Model.Any())
+{
+    <p>There is no customer registered!</p>
+}
+else
+{
+<table id="customers" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Customer Name</th>
+            <th>Membership Type</th>
+            <th>Discount Rate</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(customer.Name,"Detail","Customer",new { id = customer.Id}, null)</td>
+                <td>@customer.Membershiptype.Name</td>
+                <td>@customer.Membershiptype.DiscountRate %</td>
+                <td>
+                    <p>
+                        @Html.ActionLink("Edit","Edit","Customer", new { id = customer.Id}, new { @class = "btn btn-success btn-xs" })
+                        @Html.ActionLink("Delete","Delete","Customer", new {id = customer.Id}, new {@class = "btn btn-success btn-xs"})
+                    </p>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+}
+

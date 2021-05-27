@@ -1,0 +1,17 @@
+﻿@model MovieRentalWebApp.Models.Movie
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>@Model.Name - Details</h3>
+<hr />
+<ul>
+    <li>Genre: @Model.Genre.Name</li>
+    @if (Model.ReleaseDate.HasValue)
+    {
+        <li>Release Date: @Model.ReleaseDate.Value.ToLongDateString()</li>
+    }
+    <li>Date of movie added: @Model.DateAdded.ToLongDateString()</li>
+    <li>Number In Stock: @Model.NumberInStock</li>
+</ul>

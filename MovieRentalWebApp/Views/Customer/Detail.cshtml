@@ -1,0 +1,26 @@
+﻿@model MovieRentalWebApp.Models.Customer
+@{
+    ViewBag.Title = "Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>@Model.Name - Details</h3>
+<hr />
+<ul>
+    <li>Membership Type: @Model.Membershiptype.Name</li>
+    <li>Email Address: @Model.Email</li>
+    @if (Model.BirthDate.HasValue)
+    {
+        <li>BirthDate: @Model.BirthDate.Value.ToLongDateString()</li>
+        //ToshortDateString method shows only Date from DateTime Prop
+    }
+    @if (Model.IsSubscribedToNewsletter == true)
+    {
+        <li>Subscribed To Newsletter: Yes!</li>
+    }
+    else
+    {
+        <li>Subscribed To Newsletter: No!</li>
+    }
+</ul>
+

@@ -1,0 +1,46 @@
+﻿@model MovieRentalWebApp.ViewModels.MovieFormViewModel
+@{
+    ViewBag.Title = "MovieForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>@Model.Title</h3>
+<hr />
+@using (Html.BeginForm("Save", "Movie"))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Movie.Id)
+    @Html.ValidationSummary(true, "Please fix the indicated error")
+    <div class=" form-group ">
+        @Html.LabelFor(model => model.Movie.Name)
+        @Html.TextBoxFor(model => model.Movie.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Movie.Name)
+    </div>
+    <div class=" form-group ">
+        @Html.LabelFor(model => model.Movie.ReleaseDate)
+        @Html.TextBoxFor(model => model.Movie.ReleaseDate, "{0:d MMM yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Movie.ReleaseDate)
+    </div>
+    <div class=" form-group ">
+        @Html.LabelFor(model => model.Movie.GenreId)
+        @Html.DropDownListFor(model => model.Movie.GenreId, new SelectList(Model.Genre, "Id", "Name"), "Select Genre Type", new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Movie.GenreId)
+    </div>
+    <div class=" form-group ">
+        @Html.LabelFor(model => model.Movie.NumberInStock)
+        @if (Model.Movie.Id == 0)
+        {
+            @Html.TextBoxFor(model => model.Movie.NumberInStock, "0", new { @class = "form-control" })
+        }
+        else
+        {
+            @Html.TextBoxFor(model => model.Movie.NumberInStock, new { @class = "form-control" })
+        }
+        @Html.ValidationMessageFor(model => model.Movie.NumberInStock)
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")  @*This is script is only client side form validation*@
+}
+
