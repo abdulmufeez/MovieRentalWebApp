@@ -217,12 +217,22 @@
       <DependentUpon>202105281008182_SeedUsersAndItsRole.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="ViewModels\AddPhoneNumberViewModel.cs" />
+    <Compile Include="ViewModels\ChangePasswordViewModel.cs" />
+    <Compile Include="ViewModels\FactorViewModel.cs" />
+    <Compile Include="ViewModels\ForgotPasswordViewModel.cs" />
     <Compile Include="Models\Age18IfAMember.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\Genre.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ApplicationDbContext.cs" />
+    <Compile Include="ViewModels\ExternalLoginConfirmationViewModel.cs" />
+    <Compile Include="ViewModels\ExternalLoginListViewModel.cs" />
+    <Compile Include="ViewModels\ForgotViewModel.cs" />
+    <Compile Include="ViewModels\IndexViewModel.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\ManageLoginsViewModel.cs" />
+    <Compile Include="ViewModels\ConfigureTwoFactorViewModel.cs" />
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\RoleName.cs" />
@@ -230,6 +240,12 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CustomerFormViewModel.cs" />
     <Compile Include="ViewModels\MovieFormViewModel.cs" />
+    <Compile Include="ViewModels\RegisterViewModel.cs" />
+    <Compile Include="ViewModels\ResetPasswordViewModel.cs" />
+    <Compile Include="ViewModels\SendCodeViewModel.cs" />
+    <Compile Include="ViewModels\SetPasswordViewModel.cs" />
+    <Compile Include="ViewModels\VerifyCodeViewModel.cs" />
+    <Compile Include="ViewModels\VerifyPhoneNumberViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-lumen.css" />
