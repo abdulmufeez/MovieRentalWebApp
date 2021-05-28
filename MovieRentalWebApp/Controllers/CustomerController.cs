@@ -9,6 +9,8 @@ using MovieRentalWebApp.ViewModels;
 
 namespace MovieRentalWebApp.Controllers
 {
+    //[Authorize] if you want to protect only this controller with all its actions
+    //And restrict anonymous users
     public class CustomerController : Controller
     {
         private ApplicationDbContext _context;

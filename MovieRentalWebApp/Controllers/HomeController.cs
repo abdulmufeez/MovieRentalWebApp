@@ -6,24 +6,12 @@ using System.Web.Mvc;
 
 namespace MovieRentalWebApp.Controllers
 {
+    //This attribute is used for opening home page without asking sign in or sign up
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
     }
