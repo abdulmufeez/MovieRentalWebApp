@@ -8,6 +8,15 @@ namespace MovieRentalWebApp.Models
         [Required]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        [Display(Name = "User Name")]
+        public string UserName { get; set; }
+
+        [StringLength(100)]
+        [Display(Name = "Phone Number")]
+        public string PhoneNumber { get; set; }
     }
 
     public class ExternalLoginListViewModel

@@ -9,9 +9,12 @@ namespace MovieRentalWebApp
         {
             filters.Add(new HandleErrorAttribute());
             //This is used protect your app globally from anonymous users
-            //Email: mufeez@domain.com
-            //Pass: Domainmufeez123?
-            filters.Add(new AuthorizeAttribute()); 
+            //Username: Admin
+            //Email: admin@movierentalstore.com
+            //Pass: Adminmovierentalstore123?
+            filters.Add(new AuthorizeAttribute());
+            //with this you can never access this web without using ssl
+            filters.Add(new RequireHttpsAttribute());
         }
     }
 }
