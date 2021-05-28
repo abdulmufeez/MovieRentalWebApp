@@ -23,6 +23,7 @@ namespace MovieRentalWebApp.Models
 
         [Required]
         [Range(1,20)]
+        [Display(Name ="Numbers In Stock")]
         public short NumberInStock { get; set; }
 
         public Genre Genre { get; set; }

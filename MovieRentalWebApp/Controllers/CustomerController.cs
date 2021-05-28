@@ -26,7 +26,10 @@ namespace MovieRentalWebApp.Controllers
         public ActionResult Index()
         {
             var customerListInDb = _context.Customers.Include(c => c.Membershiptype).ToList();
-            return View(customerListInDb);
+            if (User.IsInRole("CanManageMovies"))
+                return View("CustomerList", customerListInDb);
+
+            return View("ReadOnlyCustomerList",customerListInDb);
         }
         //Get: Customer/Detail/id
         public ActionResult Detail(int id)
@@ -35,7 +38,7 @@ namespace MovieRentalWebApp.Controllers
             if (customerInDb == null)
                 return HttpNotFound();
 
-            return View(customerInDb);
+            return View("CustomerDetail",customerInDb);
         }
         //Post: Customer/New
         public ActionResult New()

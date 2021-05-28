@@ -10,21 +10,22 @@
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.Movie.Id)
-    @Html.ValidationSummary(true, "Please fix the indicated error")
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    //@Html.ValidationSummary(true, "Please fix the indicated error")
     <div class=" form-group ">
         @Html.LabelFor(model => model.Movie.Name)
         @Html.TextBoxFor(model => model.Movie.Name, new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.Movie.Name)
+        @*@Html.ValidationMessageFor(model => model.Movie.Name)*@
     </div>
     <div class=" form-group ">
         @Html.LabelFor(model => model.Movie.ReleaseDate)
         @Html.TextBoxFor(model => model.Movie.ReleaseDate, "{0:d MMM yyyy}", new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.Movie.ReleaseDate)
+        @*@Html.ValidationMessageFor(model => model.Movie.ReleaseDate)*@
     </div>
     <div class=" form-group ">
         @Html.LabelFor(model => model.Movie.GenreId)
         @Html.DropDownListFor(model => model.Movie.GenreId, new SelectList(Model.Genre, "Id", "Name"), "Select Genre Type", new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.Movie.GenreId)
+        @*@Html.ValidationMessageFor(model => model.Movie.GenreId)*@
     </div>
     <div class=" form-group ">
         @Html.LabelFor(model => model.Movie.NumberInStock)
@@ -36,7 +37,7 @@
         {
             @Html.TextBoxFor(model => model.Movie.NumberInStock, new { @class = "form-control" })
         }
-        @Html.ValidationMessageFor(model => model.Movie.NumberInStock)
+        @*@Html.ValidationMessageFor(model => model.Movie.NumberInStock)*@
     </div>
     <button type="submit" class="btn btn-primary">Save</button>
 }

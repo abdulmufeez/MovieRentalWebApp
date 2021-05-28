@@ -212,6 +212,10 @@
     <Compile Include="Migrations\202105271629533_AddedNumberInStockInMovieModel.Designer.cs">
       <DependentUpon>202105271629533_AddedNumberInStockInMovieModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105281008182_SeedUsersAndItsRole.cs" />
+    <Compile Include="Migrations\202105281008182_SeedUsersAndItsRole.Designer.cs">
+      <DependentUpon>202105281008182_SeedUsersAndItsRole.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Age18IfAMember.cs" />
@@ -221,6 +225,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
     <Compile Include="Models\Movie.cs" />
+    <Compile Include="Models\RoleName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CustomerFormViewModel.cs" />
@@ -281,12 +286,14 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Customer\Index.cshtml" />
-    <Content Include="Views\Customer\Detail.cshtml" />
+    <Content Include="Views\Customer\CustomerList.cshtml" />
+    <Content Include="Views\Customer\CustomerDetail.cshtml" />
     <Content Include="Views\Customer\CustomerForm.cshtml" />
-    <Content Include="Views\Movie\Index.cshtml" />
-    <Content Include="Views\Movie\Detail.cshtml" />
+    <Content Include="Views\Movie\MovieList.cshtml" />
+    <Content Include="Views\Movie\MovieDetail.cshtml" />
     <Content Include="Views\Movie\MovieForm.cshtml" />
+    <Content Include="Views\Customer\ReadOnlyCustomerList.cshtml" />
+    <Content Include="Views\Movie\ReadOnlyMovieList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -316,6 +323,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105271629533_AddedNumberInStockInMovieModel.resx">
       <DependentUpon>202105271629533_AddedNumberInStockInMovieModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105281008182_SeedUsersAndItsRole.resx">
+      <DependentUpon>202105281008182_SeedUsersAndItsRole.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

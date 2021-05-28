@@ -10,26 +10,27 @@
 {
     @Html.AntiForgeryToken()
     @Html.HiddenFor(model => model.Customer.Id)
-    @Html.ValidationSummary(true, "Please fix the indicated error")
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+    //@Html.ValidationSummary(true, "Please fix the indicated error")
     <div class="form-group">
         @Html.LabelFor(model => model.Customer.Name)
         @Html.TextBoxFor(model => model.Customer.Name, new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.Customer.Name)
+        @*@Html.ValidationMessageFor(model => model.Customer.Name)*@
     </div>
     <div class="form-group">
         @Html.LabelFor(model => model.Customer.Email)
         @Html.TextBoxFor(model => model.Customer.Email, new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.Customer.Email)
+        @*@Html.ValidationMessageFor(model => model.Customer.Email)*@
     </div>
     <div class="form-group">
         @Html.LabelFor(model => model.Customer.BirthDate)
         @Html.TextBoxFor(model => model.Customer.BirthDate, "{0:d MMM yyyy}", new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.Customer.BirthDate)
+        @*@Html.ValidationMessageFor(model => model.Customer.BirthDate)*@
     </div>
     <div class="form-group">
         @Html.LabelFor(model => model.Customer.MembershipTypeId)
         @Html.DropDownListFor(model => model.Customer.MembershipTypeId, new SelectList(Model.MembershipType, "Id", "Name"), "Select Membership Type", new { @class = "form-control" })
-        @Html.ValidationMessageFor(model => model.Customer.MembershipTypeId)
+        @*@Html.ValidationMessageFor(model => model.Customer.MembershipTypeId)*@
     </div>
     <div class="checkbox">
         <label>@Html.CheckBoxFor(model => model.Customer.IsSubscribedToNewsletter) Subscribed to Newsletter?</label>
