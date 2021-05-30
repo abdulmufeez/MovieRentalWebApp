@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using MovieRentalWebApp.Models;
-using System.Linq.Dynamic;
+
 
 
 namespace MovieRentalWebApp.Models

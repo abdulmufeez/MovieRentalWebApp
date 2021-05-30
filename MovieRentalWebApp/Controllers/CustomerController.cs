@@ -41,6 +41,7 @@ namespace MovieRentalWebApp.Controllers
             return View("CustomerDetail",customerInDb);
         }
         //Post: Customer/New
+        [Authorize(Roles =RoleName.CanManageMoviesAndCustomers)]
         public ActionResult New()
         {
             var newCustomerForm = new CustomerFormViewModel()
@@ -51,6 +52,7 @@ namespace MovieRentalWebApp.Controllers
             return View("CustomerForm",newCustomerForm);
         }
         //Put: Customer/Edit/id
+        [Authorize(Roles = RoleName.CanManageMoviesAndCustomers)]
         public ActionResult Edit(int id)
         {
             var customerInDb = _context.Customers.FirstOrDefault(c => c.Id == id);
@@ -67,6 +69,7 @@ namespace MovieRentalWebApp.Controllers
         //Post: Customer/Save
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = RoleName.CanManageMoviesAndCustomers)]
         public ActionResult Save(Customer customer)
         {
             if (!ModelState.IsValid)
@@ -95,6 +98,7 @@ namespace MovieRentalWebApp.Controllers
             return RedirectToAction("Index" , "Customer");
         }
         //Delete: Customer/Delete/id
+        [Authorize(Roles = RoleName.CanManageMoviesAndCustomers)]
         public ActionResult Delete(int id)
         {
             var customerInDb = _context.Customers.FirstOrDefault(c => c.Id == id);

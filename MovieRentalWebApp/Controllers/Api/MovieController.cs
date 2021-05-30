@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using AutoMapper;
+using System.Data.Entity;
 using MovieRentalWebApp.Data_Transfer_Objects;
 using MovieRentalWebApp.Models;
 
@@ -24,15 +25,30 @@ namespace MovieRentalWebApp.Controllers.Api
         }
         //GET: /Api/Movies
         [HttpGet]
-        public IHttpActionResult GetMovies()
+        public IHttpActionResult GetMovies(string query = null)
         {
-            return Ok(_context.Movies.ToList().Select(Mapper.Map<Movie, MovieDto>));
+            var moviesQuery = _context.Movies
+                .Include(m => m.Genre)
+                //filter for loading only those movies which are available in stocks 
+                .Where(m => m.NumberAvailable > 0);
+
+            //for filtering to get only required customer
+            if (!string.IsNullOrWhiteSpace(query))
+                moviesQuery = moviesQuery.Where(c => c.Name.Contains(query));
+
+            var moviesInDb = moviesQuery    
+                .ToList()
+                .Select(Mapper.Map<Movie, MovieDto>);
+            
+            return Ok(moviesInDb);
         }
         //GET: /Api/Movie/id
         [HttpGet]
         public IHttpActionResult GetMovie(int id)
         {
-            var movieInDb = _context.Movies.SingleOrDefault(m => m.Id == id);
+            var movieInDb = _context.Movies
+                .Include(m => m.Genre)
+                .SingleOrDefault(m => m.Id == id);
             if (movieInDb == null)
                 return NotFound();
 
@@ -40,7 +56,7 @@ namespace MovieRentalWebApp.Controllers.Api
         }
         //POST: /Api/Movie
         [HttpPost]
-        [Authorize(Roles = RoleName.CanManageMovies)]
+        [Authorize(Roles = RoleName.CanManageMoviesAndCustomers)]
         public IHttpActionResult CreateMovie(MovieDto movieDto)
         {
             if (!ModelState.IsValid)
@@ -55,7 +71,7 @@ namespace MovieRentalWebApp.Controllers.Api
         }
         //PUT /Api/Movies/id
         [HttpPut]
-        [Authorize(Roles = RoleName.CanManageMovies)]
+        [Authorize(Roles = RoleName.CanManageMoviesAndCustomers)]
         public IHttpActionResult UpdateMovie(int id, MovieDto movieDto)
         {
             if (!ModelState.IsValid)
@@ -71,7 +87,7 @@ namespace MovieRentalWebApp.Controllers.Api
         }
         //DELETE: /Api/Movie/id
         [HttpDelete]
-        [Authorize(Roles = RoleName.CanManageMovies)]
+        [Authorize(Roles = RoleName.CanManageMoviesAndCustomers)]
         public IHttpActionResult DeleteMovie(int id)
         {
             var movieInDb = _context.Movies.SingleOrDefault(m => m.Id == id);

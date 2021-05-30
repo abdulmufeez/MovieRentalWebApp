@@ -15,6 +15,8 @@ namespace MovieRentalWebApp.App_Start
             //Domain Model to Dto
             Mapper.CreateMap<Customer, CustomerDto>();
             Mapper.CreateMap<Movie, MovieDto>();
+            Mapper.CreateMap<MembershipType, MembershipTypeDto>();
+            Mapper.CreateMap<Genre, GenreDto>();
 
             //Dto to Domain Model
             Mapper.CreateMap<CustomerDto, Customer>().ForMember(customer => customer.Id, optional => optional.Ignore());

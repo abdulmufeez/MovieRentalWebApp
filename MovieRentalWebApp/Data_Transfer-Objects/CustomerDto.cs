@@ -35,5 +35,7 @@ namespace MovieRentalWebApp.Data_Transfer_Objects
         [Required]
         [Display(Name = "Membership Type")]
         public byte MembershipTypeId { get; set; }
+        
+        public MembershipTypeDto MembershipType { get; set; }
     }
 }

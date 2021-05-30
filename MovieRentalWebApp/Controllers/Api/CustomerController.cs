@@ -5,6 +5,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using AutoMapper;
+using System.Data.Entity;
 using MovieRentalWebApp.Data_Transfer_Objects;
 using MovieRentalWebApp.Models;
 
@@ -24,15 +25,27 @@ namespace MovieRentalWebApp.Controllers.Api
 
         //GET: /Api/Customer
         [HttpGet]
-        public IHttpActionResult GetCustomers()
+        public IHttpActionResult GetCustomers(string query = null)
         {
-            return Ok(_context.Customers.ToList().Select(Mapper.Map<Customer, CustomerDto>));
+            var customersQuery = _context.Customers
+                .Include(c => c.Membershiptype);
+            //for filtering to get only required customer
+            if (!string.IsNullOrWhiteSpace(query))
+                customersQuery = customersQuery.Where(c => c.Name.Contains(query));
+                
+            var customerInDd = customersQuery                
+                .ToList()
+                .Select(Mapper.Map<Customer, CustomerDto>);
+
+            return Ok(customerInDd);
         }
         //GET: /Api/Customer/1
         [HttpGet]
         public IHttpActionResult GetCustomer(int id)
         {
-            var customerInDb = _context.Customers.SingleOrDefault(c => c.Id == id);
+            var customerInDb = _context.Customers
+                .Include(m => m.Membershiptype)
+                .SingleOrDefault(c => c.Id == id);
             if (customerInDb == null)
                 return NotFound();
 
@@ -40,6 +53,7 @@ namespace MovieRentalWebApp.Controllers.Api
         }
         //POST: /Api/CreateCustomer
         [HttpPost]
+        [Authorize(Roles = RoleName.CanManageMoviesAndCustomers)]
         public IHttpActionResult CreateCustomer(CustomerDto customerDto)
         {
             if (!ModelState.IsValid)
@@ -54,6 +68,7 @@ namespace MovieRentalWebApp.Controllers.Api
         }
         //PUT: /Api/UpdateCustomer/id
         [HttpPut]
+        [Authorize(Roles = RoleName.CanManageMoviesAndCustomers)]
         public IHttpActionResult UpdateCustomer(int id, CustomerDto customerDto)
         {
             if (!ModelState.IsValid)
@@ -69,6 +84,7 @@ namespace MovieRentalWebApp.Controllers.Api
         }
         //DELETE: /Api/DeleteCustomer/id
         [HttpDelete]
+        [Authorize(Roles = RoleName.CanManageMoviesAndCustomers)]
         public IHttpActionResult DeleteCustomer(int id)
         {
             var customerInDb = _context.Customers.SingleOrDefault(c => c.Id == id);

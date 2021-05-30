@@ -22,12 +22,20 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/*Set set the validation summary reuslt to red*/
 .validation-summary-errors{
     color: red;
 }
-.input-validation-error {
+/*set the input text box to red*/
+.input-validation-error,
+input.error{
     border: 2px solid red;
 }
-.field-validation-error{
+/*set the lebal color to red*/
+.field-validation-error,
+label.error{
     color: red;
 }
+
+

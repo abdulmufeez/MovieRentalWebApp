@@ -8,6 +8,7 @@ namespace MovieRentalWebApp.Controllers
 {
     //This attribute is used for opening home page without asking sign in or sign up
     [AllowAnonymous]
+    [OutputCache(Duration = 0 , VaryByParam ="*")]
     public class HomeController : Controller
     {
         public ActionResult Index()

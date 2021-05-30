@@ -26,6 +26,8 @@ namespace MovieRentalWebApp.Models
         [Display(Name ="Numbers In Stock")]
         public short NumberInStock { get; set; }
 
+        public short NumberAvailable { get; set; }
+
         public Genre Genre { get; set; }
 
         [Required]
