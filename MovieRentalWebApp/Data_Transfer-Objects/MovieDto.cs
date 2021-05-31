@@ -24,6 +24,8 @@ namespace MovieRentalWebApp.Data_Transfer_Objects
         [Range(1, 20)]
         public short NumberInStock { get; set; }
 
+        public short NumberAvailable { get; set; }
+
         //public Genre Genre { get; set; }
 
         [Required]

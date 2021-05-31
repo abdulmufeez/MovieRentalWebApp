@@ -85,7 +85,7 @@
 
                 vm.movieIds.push(movie.id);
             });
-
+            //This is just javascript code which i don't understand
             $.validator.addMethod("validCustomer", function () {
                 return vm.customerId && vm.customerId !== 0;
             }, "Please select a valid customer.");
@@ -102,7 +102,10 @@
                         data: vm
                     })
                         .done(function () {
+
+                            toastr.error("Your rental will automatically expire after 20 days.");
                             toastr.success("Rentals successfully recorded.");
+                            
 
                             $("#customer").typeahead("val", "");
                             $("#movie").typeahead("val", "");

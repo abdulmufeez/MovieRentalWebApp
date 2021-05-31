@@ -19,6 +19,7 @@ else
             <tr>
                 <th>Movies</th>
                 <th>Genre</th>
+                <th>Available In stocks</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -28,10 +29,11 @@ else
                 <tr>
                     <td>@Html.ActionLink(movie.Name, "Detail", "Movie", new { id = movie.Id }, null)</td>
                     <td>@movie.Genre.Name</td>
+                    <td>@movie.NumberAvailable</td>
                     <td>
                         <p>
                             @Html.ActionLink("Edit", "Edit", "Movie", new { id = movie.Id }, new { @class = "btn btn-success btn-xs" })
-                            @Html.ActionLink("Delete", "Delete", "Movie", new { id = movie.Id }, new { @class = "btn btn-success btn-xs" })
+                            @Html.ActionLink("Delete", "Delete", "Movie", new { id = movie.Id }, new { @class = "btn btn-danger btn-xs" })
                         </p>
                     </td>
                 </tr>

@@ -74,11 +74,11 @@ namespace MovieRentalWebApp.Controllers.Api
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            var customerInModel = _context.Customers.SingleOrDefault(c => c.Id == id);
-            if (customerInModel == null)
+            var customerInDb = _context.Customers.SingleOrDefault(c => c.Id == id);
+            if (customerInDb == null)
                 return NotFound();
 
-            Mapper.Map<CustomerDto, Customer>(customerDto, customerInModel);
+            Mapper.Map<CustomerDto, Customer>(customerDto, customerInDb);
             _context.SaveChanges();
             return Ok();
         }

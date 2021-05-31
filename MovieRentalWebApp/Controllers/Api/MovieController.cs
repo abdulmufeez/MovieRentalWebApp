@@ -63,6 +63,8 @@ namespace MovieRentalWebApp.Controllers.Api
                 return BadRequest();
 
             var movieInModel = Mapper.Map<MovieDto, Movie>(movieDto);
+            //add availability same number as in number in stock for only movie registerd time
+            movieInModel.NumberAvailable = movieDto.NumberInStock;
             _context.Movies.Add(movieInModel);
             _context.SaveChanges();
 
@@ -77,11 +79,12 @@ namespace MovieRentalWebApp.Controllers.Api
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            var movieInModel = _context.Movies.SingleOrDefault(m => m.Id == id);
-            if (movieInModel == null)
+            var movieInDb = _context.Movies.SingleOrDefault(m => m.Id == id);
+            if (movieInDb == null)
                 return NotFound();
-
-            Mapper.Map<MovieDto, Movie>(movieDto, movieInModel);
+            //Updating numberavailable with numberinstock
+            movieInDb.NumberAvailable = (short)(movieInDb.NumberAvailable + (movieDto.NumberInStock - movieInDb.NumberInStock));
+            Mapper.Map<MovieDto, Movie>(movieDto, movieInDb);
             _context.SaveChanges();
             return Ok();
         }

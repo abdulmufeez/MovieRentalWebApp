@@ -37,8 +37,17 @@ namespace MovieRentalWebApp.Controllers
             var customerInDb = _context.Customers.Include(c => c.Membershiptype).FirstOrDefault(c => c.Id == id);
             if (customerInDb == null)
                 return HttpNotFound();
-
-            return View("CustomerDetail",customerInDb);
+            
+            //here i will merge customer with movies and its rental detail
+            //which is done by lots of tries :p
+            var rentalsInDb = _context.Rentals.Include(m =>m.Movie).Where(r => r.Customer.Id == id).ToList();
+      
+            var customerDetailWithMovieRental = new CustomerDetailWithRentalViewForm()
+            {
+                Customer = customerInDb, 
+                RentalDetails = rentalsInDb
+            };
+            return View("CustomerDetail",customerDetailWithMovieRental);
         }
         //Post: Customer/New
         [Authorize(Roles =RoleName.CanManageMoviesAndCustomers)]

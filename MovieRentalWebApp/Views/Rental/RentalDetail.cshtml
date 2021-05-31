@@ -1,0 +1,20 @@
+﻿@model MovieRentalWebApp.Models.Rental
+@{
+    ViewBag.Title = "RentalDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3>@Model.Customer.Name - Rental Details</h3>
+<hr />
+
+<ul>
+    <li>Name: @Model.Customer.Name</li>
+    <li>Movie Name: @Model.Movie.Name</li>
+    <li>Date Rented: @Model.DateRented.ToLongDateString()</li>
+    @if (Model.DateReturned.HasValue) 
+    {
+        <li>Expiry Date: @Model.DateReturned.Value.ToLongDateString()</li>
+    }
+</ul>
+
+

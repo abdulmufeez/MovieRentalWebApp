@@ -246,6 +246,7 @@
     <Compile Include="Models\Rental.cs" />
     <Compile Include="ViewModels\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\ChangePasswordViewModel.cs" />
+    <Compile Include="ViewModels\CustomerDetailWithRentalViewForm.cs" />
     <Compile Include="ViewModels\FactorViewModel.cs" />
     <Compile Include="ViewModels\ForgotPasswordViewModel.cs" />
     <Compile Include="Models\Age18IfAMember.cs" />
@@ -590,6 +591,8 @@
     <Content Include="Views\Movie\ReadOnlyMovieList.cshtml" />
     <Content Include="Views\Rental\Newrental.cshtml" />
     <Content Include="Views\Shared\_Navbar.cshtml" />
+    <Content Include="Views\Rental\RentalList.cshtml" />
+    <Content Include="Views\Rental\RentalDetail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
