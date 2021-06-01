@@ -7,6 +7,9 @@ namespace MovieRentalWebApp.Models
 {
     public static class RoleName
     {
-        public const string CanManageMoviesAndCustomers = "CanManageMovies";
+        public const string CanManageEverything = "CanManageEverything";
+
+        public const string CanManageCustomerAndRentalOnly = "CanManageCustomerAndRentalOnly";
+
     }
 }

@@ -13,7 +13,7 @@ namespace MovieRentalWebApp.Controllers
     //And restrict anonymous users
     public class CustomerController : Controller
     {
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
         public CustomerController()
         {
             _context = new ApplicationDbContext();
@@ -26,7 +26,8 @@ namespace MovieRentalWebApp.Controllers
         public ActionResult Index()
         {
             var customerListInDb = _context.Customers.Include(c => c.Membershiptype).ToList();
-            if (User.IsInRole("CanManageMovies"))
+            if (User.IsInRole(RoleName.CanManageEverything) || 
+                User.IsInRole(RoleName.CanManageCustomerAndRentalOnly))
                 return View("CustomerList", customerListInDb);
 
             return View("ReadOnlyCustomerList",customerListInDb);
@@ -50,7 +51,7 @@ namespace MovieRentalWebApp.Controllers
             return View("CustomerDetail",customerDetailWithMovieRental);
         }
         //Post: Customer/New
-        [Authorize(Roles =RoleName.CanManageMoviesAndCustomers)]
+        //[Authorize(Roles =RoleName.CanManageEverything + "," + RoleName.CanManageCustomerAndRentalOnly)]
         public ActionResult New()
         {
             var newCustomerForm = new CustomerFormViewModel()
@@ -61,7 +62,7 @@ namespace MovieRentalWebApp.Controllers
             return View("CustomerForm",newCustomerForm);
         }
         //Put: Customer/Edit/id
-        [Authorize(Roles = RoleName.CanManageMoviesAndCustomers)]
+        [Authorize(Roles = RoleName.CanManageEverything + "," + RoleName.CanManageCustomerAndRentalOnly)]
         public ActionResult Edit(int id)
         {
             var customerInDb = _context.Customers.FirstOrDefault(c => c.Id == id);
@@ -78,7 +79,7 @@ namespace MovieRentalWebApp.Controllers
         //Post: Customer/Save
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = RoleName.CanManageMoviesAndCustomers)]
+        //[Authorize(Roles = RoleName.CanManageEverything + "," + RoleName.CanManageCustomerAndRentalOnly)]
         public ActionResult Save(Customer customer)
         {
             if (!ModelState.IsValid)
@@ -107,7 +108,7 @@ namespace MovieRentalWebApp.Controllers
             return RedirectToAction("Index" , "Customer");
         }
         //Delete: Customer/Delete/id
-        [Authorize(Roles = RoleName.CanManageMoviesAndCustomers)]
+        [Authorize(Roles = RoleName.CanManageEverything + "," + RoleName.CanManageCustomerAndRentalOnly)]
         public ActionResult Delete(int id)
         {
             var customerInDb = _context.Customers.FirstOrDefault(c => c.Id == id);

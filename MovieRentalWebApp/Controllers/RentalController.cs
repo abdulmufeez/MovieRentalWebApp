@@ -11,7 +11,7 @@ namespace MovieRentalWebApp.Controllers
 {
     public class RentalController : Controller
     {
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
         public RentalController()
         {
             _context = new ApplicationDbContext();
@@ -44,9 +44,14 @@ namespace MovieRentalWebApp.Controllers
                 .Include(rd => rd.Customer)
                 .Include(rd => rd.Movie)
                 .ToList();
-            return View("RentalList",rentalDetailList);
+            if (User.IsInRole(RoleName.CanManageEverything)||
+                User.IsInRole(RoleName.CanManageCustomerAndRentalOnly))
+                return View("RentalList", rentalDetailList);
+
+            return View("ReadOnlyRentalList", rentalDetailList);
         }
         //GET: Rental/New
+
         public ActionResult New()
         {            
             return View("NewRental");
@@ -64,6 +69,7 @@ namespace MovieRentalWebApp.Controllers
             return View("RentalDetail",rentalInDb);
         }
         //Delete: Rental/Delete/id
+        [Authorize(Roles = RoleName.CanManageEverything + "," + RoleName.CanManageCustomerAndRentalOnly)]
         public ActionResult Delete(int id)
         {
             var rentalInDb = _context.Rentals

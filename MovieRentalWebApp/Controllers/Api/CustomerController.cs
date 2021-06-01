@@ -53,7 +53,7 @@ namespace MovieRentalWebApp.Controllers.Api
         }
         //POST: /Api/CreateCustomer
         [HttpPost]
-        [Authorize(Roles = RoleName.CanManageMoviesAndCustomers)]
+        //[Authorize(Roles = RoleName.CanManageEverything + "," + RoleName.CanManageCustomerAndRentalOnly)]
         public IHttpActionResult CreateCustomer(CustomerDto customerDto)
         {
             if (!ModelState.IsValid)
@@ -68,7 +68,7 @@ namespace MovieRentalWebApp.Controllers.Api
         }
         //PUT: /Api/UpdateCustomer/id
         [HttpPut]
-        [Authorize(Roles = RoleName.CanManageMoviesAndCustomers)]
+        [Authorize(Roles = RoleName.CanManageEverything + "," + RoleName.CanManageCustomerAndRentalOnly)]
         public IHttpActionResult UpdateCustomer(int id, CustomerDto customerDto)
         {
             if (!ModelState.IsValid)
@@ -84,7 +84,7 @@ namespace MovieRentalWebApp.Controllers.Api
         }
         //DELETE: /Api/DeleteCustomer/id
         [HttpDelete]
-        [Authorize(Roles = RoleName.CanManageMoviesAndCustomers)]
+        [Authorize(Roles = RoleName.CanManageEverything + "," + RoleName.CanManageCustomerAndRentalOnly)]
         public IHttpActionResult DeleteCustomer(int id)
         {
             var customerInDb = _context.Customers.SingleOrDefault(c => c.Id == id);

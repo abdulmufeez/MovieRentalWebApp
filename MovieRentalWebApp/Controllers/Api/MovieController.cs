@@ -56,7 +56,7 @@ namespace MovieRentalWebApp.Controllers.Api
         }
         //POST: /Api/Movie
         [HttpPost]
-        [Authorize(Roles = RoleName.CanManageMoviesAndCustomers)]
+        [Authorize(Roles = RoleName.CanManageEverything)]
         public IHttpActionResult CreateMovie(MovieDto movieDto)
         {
             if (!ModelState.IsValid)
@@ -73,7 +73,7 @@ namespace MovieRentalWebApp.Controllers.Api
         }
         //PUT /Api/Movies/id
         [HttpPut]
-        [Authorize(Roles = RoleName.CanManageMoviesAndCustomers)]
+        [Authorize(Roles = RoleName.CanManageEverything)]
         public IHttpActionResult UpdateMovie(int id, MovieDto movieDto)
         {
             if (!ModelState.IsValid)
@@ -90,7 +90,7 @@ namespace MovieRentalWebApp.Controllers.Api
         }
         //DELETE: /Api/Movie/id
         [HttpDelete]
-        [Authorize(Roles = RoleName.CanManageMoviesAndCustomers)]
+        [Authorize(Roles = RoleName.CanManageEverything)]
         public IHttpActionResult DeleteMovie(int id)
         {
             var movieInDb = _context.Movies.SingleOrDefault(m => m.Id == id);

@@ -17,7 +17,6 @@ else
             <tr>
                 <th>Customer</th>
                 <th>Movie</th>
-                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -25,12 +24,7 @@ else
             {
             <tr>
                 <td>@Html.ActionLink(rentalDetail.Customer.Name, "Detail", "Rental", new { id = rentalDetail.Id }, null)</td>
-                <td>@Html.ActionLink(rentalDetail.Movie.Name, "Detail", "Rental", new { id = rentalDetail.Id }, null)</td>                
-                <td>
-                    <p>
-                        @Html.ActionLink("Delete", "Delete", "Rental", new { id = rentalDetail.Id }, new { @class = "btn btn-danger btn-xs" })
-                    </p>
-                </td>
+                <td>@Html.ActionLink(rentalDetail.Movie.Name, "Detail", "Rental", new { id = rentalDetail.Id }, null)</td>                                
             </tr>
             }
         </tbody>

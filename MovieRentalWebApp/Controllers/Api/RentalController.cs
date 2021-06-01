@@ -12,7 +12,7 @@ namespace MovieRentalWebApp.Controllers.Api
 {
     public class RentalController : ApiController
     {
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
         public RentalController()
         {
             _context = new ApplicationDbContext();

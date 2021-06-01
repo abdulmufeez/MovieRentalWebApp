@@ -242,6 +242,10 @@
     <Compile Include="Migrations\202105300907518_AddedNumberAvailbalePropertyInMoviesClass.Designer.cs">
       <DependentUpon>202105300907518_AddedNumberAvailbalePropertyInMoviesClass.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106010912590_SeedingUsersAndItRoles-2.cs" />
+    <Compile Include="Migrations\202106010912590_SeedingUsersAndItRoles-2.Designer.cs">
+      <DependentUpon>202106010912590_SeedingUsersAndItRoles-2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Rental.cs" />
     <Compile Include="ViewModels\AddPhoneNumberViewModel.cs" />
@@ -593,6 +597,7 @@
     <Content Include="Views\Shared\_Navbar.cshtml" />
     <Content Include="Views\Rental\RentalList.cshtml" />
     <Content Include="Views\Rental\RentalDetail.cshtml" />
+    <Content Include="Views\Rental\ReadOnlyRentalList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -631,6 +636,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105300907518_AddedNumberAvailbalePropertyInMoviesClass.resx">
       <DependentUpon>202105300907518_AddedNumberAvailbalePropertyInMoviesClass.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106010912590_SeedingUsersAndItRoles-2.resx">
+      <DependentUpon>202106010912590_SeedingUsersAndItRoles-2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -164,8 +164,15 @@ namespace MovieRentalWebApp.Controllers
                     //temperay code to asign manager a role for editing movies
                     //var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
                     //var roleManager = new RoleManager<IdentityRole>(roleStore);
-                    //await roleManager.CreateAsync(new IdentityRole("CanManageMovies"));
-                    //await UserManager.AddToRoleAsync(user.Id, "CanManageMovies");
+                    //await roleManager.CreateAsync(new IdentityRole("CanManageEverything"));
+                    //await UserManager.AddToRoleAsync(user.Id, "CanManageEverything");
+                    ///
+                    /// 
+                    /// 
+                    //var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    //var roleManager = new RoleManager<IdentityRole>(roleStore);
+                    //await roleManager.CreateAsync(new IdentityRole("CanManageCustomerAndRentalOnly"));
+                    //await UserManager.AddToRoleAsync(user.Id, "CanManageCustomerAndRentalOnly");
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
