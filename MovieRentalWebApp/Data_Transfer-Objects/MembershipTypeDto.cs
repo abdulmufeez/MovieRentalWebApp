@@ -10,7 +10,10 @@ namespace MovieRentalWebApp.Data_Transfer_Objects
     {
         public byte Id { get; set; }
 
-        //[Required]
+        [Required]
         public string Name { get; set; }
+
+        public static readonly byte Unknown = 0;
+        public static readonly byte PayAsYouGo = 1;
     }
 }

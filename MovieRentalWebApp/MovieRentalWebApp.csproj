@@ -205,6 +205,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MovieController.cs" />
     <Compile Include="Controllers\RentalController.cs" />
+    <Compile Include="Data_Transfer-Objects\Age18IfAMemberDto.cs" />
     <Compile Include="Data_Transfer-Objects\CustomerDto.cs" />
     <Compile Include="Data_Transfer-Objects\GenreDto.cs" />
     <Compile Include="Data_Transfer-Objects\MembershipTypeDto.cs" />

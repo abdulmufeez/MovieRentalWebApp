@@ -14,6 +14,7 @@ namespace MovieRentalWebApp
                         "~/Scripts/bootbox.js",
                         "~/Scripts/typeahead.bundle.js",
                         "~/Scripts/toastr.js"
+                        //this library will be used for listing data 
                         // "~/scripts/datatables/jquery.datatables.js",
                         //"~/scripts/datatables/datatables.bootstrap.js",
                         ));            
@@ -28,7 +29,8 @@ namespace MovieRentalWebApp
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-lumen.css",
-                    //"~/content/datatables/css/datatables.bootstrap.css",
+                      //this library will be used for listing data 
+                      //"~/content/datatables/css/datatables.bootstrap.css",
                       "~/Content/Site.css",
                       "~/Content/TypeaheadStyleSheet.css",
                       "~/Content/toastr.css"

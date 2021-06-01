@@ -22,7 +22,7 @@ namespace MovieRentalWebApp.Models
         public DateTime DateAdded { get; set; }
 
         [Required]
-        [Range(1,20)]
+        [Range(1,30)]
         [Display(Name ="Numbers In Stock")]
         public short NumberInStock { get; set; }
 

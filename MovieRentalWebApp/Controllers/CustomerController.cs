@@ -25,7 +25,9 @@ namespace MovieRentalWebApp.Controllers
         // GET: Customer
         public ActionResult Index()
         {
-            var customerListInDb = _context.Customers.Include(c => c.Membershiptype).ToList();
+            var customerListInDb = _context.Customers
+                .Include(c => c.Membershiptype)
+                .ToList();
             if (User.IsInRole(RoleName.CanManageEverything) || 
                 User.IsInRole(RoleName.CanManageCustomerAndRentalOnly))
                 return View("CustomerList", customerListInDb);
@@ -35,13 +37,18 @@ namespace MovieRentalWebApp.Controllers
         //Get: Customer/Detail/id
         public ActionResult Detail(int id)
         {
-            var customerInDb = _context.Customers.Include(c => c.Membershiptype).FirstOrDefault(c => c.Id == id);
+            var customerInDb = _context.Customers
+                .Include(c => c.Membershiptype)
+                .FirstOrDefault(c => c.Id == id);
             if (customerInDb == null)
                 return HttpNotFound();
             
             //here i will merge customer with movies and its rental detail
             //which is done by lots of tries :p
-            var rentalsInDb = _context.Rentals.Include(m =>m.Movie).Where(r => r.Customer.Id == id).ToList();
+            var rentalsInDb = _context.Rentals
+                .Include(m =>m.Movie)
+                .Where(r => r.Customer.Id == id)
+                .ToList();
       
             var customerDetailWithMovieRental = new CustomerDetailWithRentalViewForm()
             {
@@ -65,7 +72,8 @@ namespace MovieRentalWebApp.Controllers
         [Authorize(Roles = RoleName.CanManageEverything + "," + RoleName.CanManageCustomerAndRentalOnly)]
         public ActionResult Edit(int id)
         {
-            var customerInDb = _context.Customers.FirstOrDefault(c => c.Id == id);
+            var customerInDb = _context.Customers
+                .FirstOrDefault(c => c.Id == id);
             if (customerInDb == null)
                 return HttpNotFound();
 
@@ -97,7 +105,9 @@ namespace MovieRentalWebApp.Controllers
             }
             else
             {
-                var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
+                var customerInDb = _context.Customers
+                    .Single(c => c.Id == customer.Id);
+
                 customerInDb.Name = customer.Name;
                 customerInDb.Email = customer.Email;
                 customerInDb.BirthDate = customer.BirthDate;
@@ -111,7 +121,8 @@ namespace MovieRentalWebApp.Controllers
         [Authorize(Roles = RoleName.CanManageEverything + "," + RoleName.CanManageCustomerAndRentalOnly)]
         public ActionResult Delete(int id)
         {
-            var customerInDb = _context.Customers.FirstOrDefault(c => c.Id == id);
+            var customerInDb = _context.Customers
+                .FirstOrDefault(c => c.Id == id);
             if (customerInDb == null)
                 return HttpNotFound();
             else

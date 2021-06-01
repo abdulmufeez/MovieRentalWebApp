@@ -25,7 +25,9 @@ namespace MovieRentalWebApp.Controllers
         // GET: Movie
         public ActionResult Index()
         {
-            var movieInDb = _context.Movies.Include(m => m.Genre).ToList();
+            var movieInDb = _context.Movies
+                .Include(m => m.Genre)
+                .ToList();
             if (User.IsInRole(RoleName.CanManageEverything))
                 return View("MovieList", movieInDb);
 
@@ -34,7 +36,9 @@ namespace MovieRentalWebApp.Controllers
         //GET: Movie/Detail/id
         public ActionResult Detail(int id)
         {
-            var movieInDb = _context.Movies.Include(m => m.Genre).SingleOrDefault(m => m.Id == id);
+            var movieInDb = _context.Movies
+                .Include(m => m.Genre)
+                .SingleOrDefault(m => m.Id == id);
             if (movieInDb == null)
                 return HttpNotFound();
 
@@ -55,7 +59,8 @@ namespace MovieRentalWebApp.Controllers
         [Authorize(Roles = RoleName.CanManageEverything)]
         public ActionResult Edit(int id)
         {
-            var movieInDb = _context.Movies.SingleOrDefault(m => m.Id == id);
+            var movieInDb = _context.Movies
+                .SingleOrDefault(m => m.Id == id);
             if (movieInDb == null)
                 return HttpNotFound();
 
@@ -93,7 +98,8 @@ namespace MovieRentalWebApp.Controllers
                 movieInDb.Name = movie.Name;
                 movieInDb.ReleaseDate = movie.ReleaseDate;
                 //Updating numberavailable with numberinstock
-                movieInDb.NumberAvailable = (short)(movieInDb.NumberAvailable + (movie.NumberInStock - movieInDb.NumberInStock));
+                movieInDb.NumberAvailable = (short)(movieInDb.NumberAvailable 
+                    + (movie.NumberInStock - movieInDb.NumberInStock));
                 movieInDb.NumberInStock = movie.NumberInStock;
                 
                 movieInDb.GenreId = movie.GenreId;
@@ -105,7 +111,8 @@ namespace MovieRentalWebApp.Controllers
         [Authorize(Roles = RoleName.CanManageEverything)]
         public ActionResult Delete(int id)
         {
-            var movieInDb = _context.Movies.SingleOrDefault(m => m.Id == id);
+            var movieInDb = _context.Movies
+                .SingleOrDefault(m => m.Id == id);
             if (movieInDb == null)
                 return HttpNotFound();
             else

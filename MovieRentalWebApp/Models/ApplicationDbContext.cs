@@ -6,6 +6,8 @@ namespace MovieRentalWebApp.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        //this is used to create entities in database basically we have to create claas with properties 
+        //to form a entity with its fields
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Movie> Movies { get; set; }
         public DbSet<MembershipType> MembershipTypes { get; set; }

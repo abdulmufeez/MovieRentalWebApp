@@ -13,7 +13,7 @@ namespace MovieRentalWebApp.Controllers.Api
 {
     public class CustomerController : ApiController
     {
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
         public CustomerController()
         {
             _context = new ApplicationDbContext();
@@ -31,7 +31,8 @@ namespace MovieRentalWebApp.Controllers.Api
                 .Include(c => c.Membershiptype);
             //for filtering to get only required customer
             if (!string.IsNullOrWhiteSpace(query))
-                customersQuery = customersQuery.Where(c => c.Name.Contains(query));
+                customersQuery = customersQuery
+                    .Where(c => c.Name.Contains(query));
                 
             var customerInDd = customersQuery                
                 .ToList()
@@ -74,7 +75,8 @@ namespace MovieRentalWebApp.Controllers.Api
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            var customerInDb = _context.Customers.SingleOrDefault(c => c.Id == id);
+            var customerInDb = _context.Customers
+                .SingleOrDefault(c => c.Id == id);
             if (customerInDb == null)
                 return NotFound();
 
@@ -87,7 +89,8 @@ namespace MovieRentalWebApp.Controllers.Api
         [Authorize(Roles = RoleName.CanManageEverything + "," + RoleName.CanManageCustomerAndRentalOnly)]
         public IHttpActionResult DeleteCustomer(int id)
         {
-            var customerInDb = _context.Customers.SingleOrDefault(c => c.Id == id);
+            var customerInDb = _context.Customers
+                .SingleOrDefault(c => c.Id == id);
             if (customerInDb == null)
                 return NotFound();
 

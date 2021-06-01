@@ -20,7 +20,8 @@ namespace MovieRentalWebApp.Controllers
             //this will automatically delete rental record after 20 days rented movie
             //but here is a problem when our record becomes much much bigger it will automatically
             //decrease our application performance
-            var rentalInDb = _context.Rentals.Where(rd => 
+            var rentalInDb = _context.Rentals.Where(rd =>
+            //this truncate function is used to get only date part in datetime method
                 DbFunctions.TruncateTime(rd.DateReturned) == 
                 DbFunctions.TruncateTime(DateTime.Now))
                 .ToList();

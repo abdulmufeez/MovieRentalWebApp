@@ -10,6 +10,7 @@ namespace MovieRentalWebApp
     {
         public static void Register(HttpConfiguration config)
         {
+            //this code is for listing all properties in project camelCase notations in Api section
             var settings = config.Formatters.JsonFormatter.SerializerSettings;
             settings.ContractResolver = new CamelCasePropertyNamesContractResolver();
             settings.Formatting = Newtonsoft.Json.Formatting.Indented;

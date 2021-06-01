@@ -14,7 +14,7 @@ namespace MovieRentalWebApp.Controllers.Api
 {
     public class MovieController : ApiController
     {
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
         public MovieController()
         {
             _context = new ApplicationDbContext();
@@ -34,7 +34,8 @@ namespace MovieRentalWebApp.Controllers.Api
 
             //for filtering to get only required customer
             if (!string.IsNullOrWhiteSpace(query))
-                moviesQuery = moviesQuery.Where(c => c.Name.Contains(query));
+                moviesQuery = moviesQuery
+                    .Where(c => c.Name.Contains(query));
 
             var moviesInDb = moviesQuery    
                 .ToList()
@@ -79,11 +80,13 @@ namespace MovieRentalWebApp.Controllers.Api
             if (!ModelState.IsValid)
                 return BadRequest();
 
-            var movieInDb = _context.Movies.SingleOrDefault(m => m.Id == id);
+            var movieInDb = _context.Movies.
+                SingleOrDefault(m => m.Id == id);
             if (movieInDb == null)
                 return NotFound();
             //Updating numberavailable with numberinstock
-            movieInDb.NumberAvailable = (short)(movieInDb.NumberAvailable + (movieDto.NumberInStock - movieInDb.NumberInStock));
+            movieInDb.NumberAvailable = (short)(movieInDb.NumberAvailable 
+                + (movieDto.NumberInStock - movieInDb.NumberInStock));
             Mapper.Map<MovieDto, Movie>(movieDto, movieInDb);
             _context.SaveChanges();
             return Ok();
@@ -93,7 +96,8 @@ namespace MovieRentalWebApp.Controllers.Api
         [Authorize(Roles = RoleName.CanManageEverything)]
         public IHttpActionResult DeleteMovie(int id)
         {
-            var movieInDb = _context.Movies.SingleOrDefault(m => m.Id == id);
+            var movieInDb = _context.Movies
+                .SingleOrDefault(m => m.Id == id);
             if (movieInDb == null)
                 return NotFound();
 

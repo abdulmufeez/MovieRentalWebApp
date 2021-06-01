@@ -60,7 +60,8 @@ namespace MovieRentalWebApp.Controllers.Api
                     Customer = customerInDb,
                     Movie = movie,
                     DateRented = DateTime.Now,
-                    //this will set the expiry date for only 20 days
+                    //this will trigger the auto delete which i design constructor
+                    //the expiry date is 20 days only
                     DateReturned = DateTime.Now.AddDays(20)                    
                 };
                 _context.Rentals.Add(rental);

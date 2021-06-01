@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using MovieRentalWebApp.Models;
+using MovieRentalWebApp.Data_Transfer_Objects;
 
 namespace MovieRentalWebApp.Data_Transfer_Objects
 {
@@ -23,15 +24,13 @@ namespace MovieRentalWebApp.Data_Transfer_Objects
         public string Email { get; set; }
 
         [Display(Name = "Birthdate")]
-        //[Age18IfAMember]
+        [Age18IfAMemberDto]
         public DateTime? BirthDate { get; set; }
 
         [Required]
         [Display(Name = "Subscribe to newsletter ?")]
         public bool IsSubscribedToNewsletter { get; set; }
-
-        //public MembershipType Membershiptype { get; set; }
-
+        
         [Required]
         [Display(Name = "Membership Type")]
         public byte MembershipTypeId { get; set; }

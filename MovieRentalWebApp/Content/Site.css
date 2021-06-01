@@ -23,6 +23,11 @@ textarea {
     max-width: 280px;
 }
 
+
+
+
+
+
 /*Set set the validation summary reuslt to red*/
 .validation-summary-errors{
     color: red;

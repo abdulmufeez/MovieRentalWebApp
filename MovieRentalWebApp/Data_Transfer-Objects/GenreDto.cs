@@ -10,7 +10,7 @@ namespace MovieRentalWebApp.Data_Transfer_Objects
     {
         public short Id { get; set; }
 
-        //[Required]
+        [Required]
         public string Name { get; set; }
 
     }

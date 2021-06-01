@@ -21,12 +21,10 @@ namespace MovieRentalWebApp.Data_Transfer_Objects
         public DateTime DateAdded { get; set; }
 
         [Required]
-        [Range(1, 20)]
+        [Range(1, 30)]
         public short NumberInStock { get; set; }
 
         public short NumberAvailable { get; set; }
-
-        //public Genre Genre { get; set; }
 
         [Required]
         [Display(Name = "Genre Type")]
