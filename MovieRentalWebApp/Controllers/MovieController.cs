@@ -13,7 +13,7 @@ namespace MovieRentalWebApp.Controllers
     //And restrict anonymous users
     public class MovieController : Controller
     {
-        private ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
         public MovieController()
         {
             _context = new ApplicationDbContext();

@@ -17,8 +17,8 @@ namespace MovieRentalWebApp.ViewModels
             get
             {
                 return (Movie != null && Movie.Id == 0)
-                    ? "Edit Movie"
-                    : "New Movie";
+                    ? "New Movie"
+                    : "Edit Movie";
             }
         }
     }

@@ -6,6 +6,7 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
 using MovieRentalWebApp.Models;
+using System.Configuration;
 
 namespace MovieRentalWebApp
 {
@@ -55,13 +56,13 @@ namespace MovieRentalWebApp
             //   consumerSecret: "");
 
             app.UseFacebookAuthentication(
-               appId: "343902040494814",
-               appSecret: "60cb5b19e69da9523fab127decc2f86f");
+               appId: ConfigurationManager.AppSettings["FacebookAppId"],
+               appSecret: ConfigurationManager.AppSettings["FacebookAppSecret"]);
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             {
-                ClientId = "257000020475-i750eluq21nll8kvk9dvhff6eajjrk3q.apps.googleusercontent.com",
-                ClientSecret = "VLfpKLSYYqQg9MEg7dQ5v6S5"
+                ClientId = ConfigurationManager.AppSettings["GoogleClientId"],
+                ClientSecret = ConfigurationManager.AppSettings["GoogleClientSecret"]
             });
         }
     }

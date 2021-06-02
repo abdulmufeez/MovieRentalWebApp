@@ -33,7 +33,8 @@ namespace MovieRentalWebApp
                       //"~/content/datatables/css/datatables.bootstrap.css",
                       "~/Content/Site.css",
                       "~/Content/TypeaheadStyleSheet.css",
-                      "~/Content/toastr.css"
+                      "~/Content/toastr.css",
+                      "~/content/CustomerrorStyleSheet.css"
                       ));
         }
     }

@@ -3,7 +3,14 @@
 @{
     ViewBag.Title = "Error";
 }
+<div id="notfound">
+    <div class="notfound">
+        <div class="notfound-404">
+            <h1>Oops!</h1>
+            <h2>404 - The Page can't be found</h2>
+        </div>
+            @Html.ActionLink("Go to homepage", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    </div>
+</div>
 
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
-
+@
