@@ -28,7 +28,7 @@ namespace MovieRentalWebApp
                         "~/Scripts/modernizr-*"));            
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap-lumen.css",
+                      "~/Content/bootstrap-Lumen.css",
                       //this library will be used for listing data 
                       //"~/content/datatables/css/datatables.bootstrap.css",
                       "~/Content/Site.css",

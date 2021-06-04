@@ -286,6 +286,9 @@
   <ItemGroup>
     <Content Include="404.html" />
     <Content Include="App_Readme\Elmah.txt" />
+    <Content Include="Content\bootstrap-darkly.css" />
+    <Content Include="Content\bootstrap-flatty.css" />
+    <Content Include="Content\bootstrap-journal.css" />
     <Content Include="Content\bootstrap-lumen.css" />
     <Content Include="Content\bootstrap-minty.css" />
     <Content Include="Content\bootstrap-quartz.css" />
